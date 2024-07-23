@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://de8uq7msyqwt7"]
+
+[ext_resource type="Script" path="res://Scripts/DemonController.gd" id="1_t2d4y"]
+[ext_resource type="Texture2D" uid="uid://buolvkimhd1g5" path="res://icon.svg" id="2_3njq6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_14b2x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_3njq6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mpdal"]
+radius = 68.0
+height = 136.0
+
+[node name="Demon" type="RigidBody2D"]
+script = ExtResource("1_t2d4y")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_14b2x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_mpdal")
