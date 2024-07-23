@@ -85,7 +85,7 @@ script = ExtResource("1_imu6a")
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_umh2c")
 animation = &"walk"
-frame_progress = 0.0386643
+frame_progress = 0.0651099
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 2)

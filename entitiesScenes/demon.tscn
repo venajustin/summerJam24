@@ -18,8 +18,10 @@ animations = [{
 radius = 68.0
 height = 136.0
 
-[node name="Demon" type="RigidBody2D"]
+[node name="Demon" type="Area2D"]
+scale = Vector2(0.28381, 0.28381)
 script = ExtResource("1_t2d4y")
+speed = 70
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_14b2x")
