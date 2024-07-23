@@ -1,0 +1,94 @@
+[gd_scene load_steps=3 format=3 uid="uid://doa818g01xn4"]
+
+[ext_resource type="Script" path="res://Scripts/statbars.gd" id="1_384lw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_a1883"]
+font_size = 35
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_384lw")
+
+[node name="Health" type="ColorRect" parent="."]
+offset_top = 606.0
+offset_right = 300.0
+offset_bottom = 626.0
+color = Color(0.301961, 1, 0.34902, 1)
+
+[node name="Stamina" type="ColorRect" parent="."]
+offset_top = 574.0
+offset_right = 300.0
+offset_bottom = 594.0
+color = Color(0.859069, 0.915737, 0.405795, 1)
+
+[node name="Mana" type="ColorRect" parent="."]
+offset_top = 542.0
+offset_right = 300.0
+offset_bottom = 562.0
+color = Color(0, 0.513726, 0.917647, 1)
+
+[node name="DeathScreen" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="DeathScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -724.0
+offset_top = -416.0
+offset_right = 1836.0
+offset_bottom = 1024.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.89, 0.2136, 0.2136, 0.678431)
+
+[node name="Label" type="Label" parent="DeathScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 455.5
+offset_top = 279.5
+offset_right = 656.5
+offset_bottom = 328.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_a1883")
+
+[node name="Label2" type="Label" parent="DeathScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 459.5
+offset_top = 324.0
+offset_right = 652.5
+offset_bottom = 347.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "He must consume all......."
+
+[node name="Label3" type="Label" parent="DeathScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 460.0
+offset_top = 348.0
+offset_right = 653.0
+offset_bottom = 371.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Press <Space> to play again."

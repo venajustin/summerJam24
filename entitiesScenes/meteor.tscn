@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxd233mo0u48d"]
+
+[ext_resource type="Texture2D" uid="uid://buolvkimhd1g5" path="res://icon.svg" id="1_obo8r"]
+[ext_resource type="Script" path="res://Scripts/meteor.gd" id="1_xkss6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3awpo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_obo8r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7eloo"]
+radius = 97.1854
+
+[node name="Meteor" type="Area2D"]
+scale = Vector2(0.383893, 0.383893)
+script = ExtResource("1_xkss6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3awpo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_7eloo")
+
+[node name="Shadow" type="AnimatedSprite2D" parent="."]
