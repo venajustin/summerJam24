@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dyujv2upnb8lb"]
+[gd_scene load_steps=5 format=3 uid="uid://dyujv2upnb8lb"]
 
 [ext_resource type="Texture2D" uid="uid://buolvkimhd1g5" path="res://icon.svg" id="1_bs0lq"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_imu6a"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_umh2c"]
 animations = [{
@@ -17,8 +18,8 @@ animations = [{
 radius = 62.0
 height = 124.0
 
-[node name="Player" type="RigidBody2D"]
-gravity_scale = 0.0
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_imu6a")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_umh2c")
