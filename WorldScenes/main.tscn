@@ -1,7 +1,64 @@
-[gd_scene load_steps=2 format=3 uid="uid://cnw01pvvbha64"]
+[gd_scene load_steps=3 format=3 uid="uid://cnw01pvvbha64"]
 
 [ext_resource type="PackedScene" uid="uid://dyujv2upnb8lb" path="res://entitiesScenes/player.tscn" id="1_phvr7"]
+[ext_resource type="Texture2D" uid="uid://buolvkimhd1g5" path="res://icon.svg" id="2_2g4mx"]
 
 [node name="Node2D" type="Node2D"]
 
+[node name="background decor" type="Node" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="background decor"]
+z_index = -1
+position = Vector2(60, -9)
+scale = Vector2(0.184165, 0.184165)
+texture = ExtResource("2_2g4mx")
+
+[node name="Sprite2D2" type="Sprite2D" parent="background decor"]
+z_index = -1
+position = Vector2(120, 52)
+scale = Vector2(0.184165, 0.184165)
+texture = ExtResource("2_2g4mx")
+
+[node name="Sprite2D3" type="Sprite2D" parent="background decor"]
+z_index = -1
+position = Vector2(9.00001, 75)
+scale = Vector2(0.184165, 0.184165)
+texture = ExtResource("2_2g4mx")
+
+[node name="Sprite2D4" type="Sprite2D" parent="background decor"]
+z_index = -1
+position = Vector2(117, -11)
+scale = Vector2(0.184165, 0.184165)
+texture = ExtResource("2_2g4mx")
+
+[node name="Sprite2D5" type="Sprite2D" parent="background decor"]
+z_index = -1
+position = Vector2(-30, -51)
+scale = Vector2(0.184165, 0.184165)
+texture = ExtResource("2_2g4mx")
+
+[node name="Sprite2D6" type="Sprite2D" parent="background decor"]
+z_index = -1
+position = Vector2(-75, 64)
+rotation = 2.50357
+scale = Vector2(0.184165, 0.184165)
+texture = ExtResource("2_2g4mx")
+
+[node name="Sprite2D7" type="Sprite2D" parent="background decor"]
+z_index = -1
+position = Vector2(60, 32)
+rotation = 2.50357
+scale = Vector2(0.184165, 0.184165)
+texture = ExtResource("2_2g4mx")
+
+[node name="Sprite2D8" type="Sprite2D" parent="background decor"]
+z_index = -1
+position = Vector2(-116, -1)
+rotation = 2.50357
+scale = Vector2(0.184165, 0.184165)
+texture = ExtResource("2_2g4mx")
+
 [node name="Player" parent="." instance=ExtResource("1_phvr7")]
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(2, 2)

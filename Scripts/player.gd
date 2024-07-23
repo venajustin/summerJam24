@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var speed = 500
+@export var speed = 100
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,7 +14,7 @@ func _physics_process(delta):
 	direction.y = Input.get_axis("move_up", "move_down")
 	
 	if direction:
-		velocity = direction * speed
+		velocity = direction.normalized() * speed
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.y = move_toward(velocity.y, 0, speed)
