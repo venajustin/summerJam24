@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://de8uq7msyqwt7"]
+[gd_scene load_steps=7 format=3 uid="uid://de8uq7msyqwt7"]
 
 [ext_resource type="Script" path="res://Scripts/DemonController.gd" id="1_t2d4y"]
 [ext_resource type="Texture2D" uid="uid://buolvkimhd1g5" path="res://icon.svg" id="2_3njq6"]
+[ext_resource type="PackedScene" uid="uid://cxd233mo0u48d" path="res://entitiesScenes/meteor.tscn" id="2_4mx7v"]
+[ext_resource type="PackedScene" uid="uid://x0okev48u71u" path="res://entitiesScenes/bullet.tscn" id="3_qdnbx"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_14b2x"]
 animations = [{
@@ -22,6 +24,8 @@ height = 136.0
 scale = Vector2(0.28381, 0.28381)
 script = ExtResource("1_t2d4y")
 speed = 70
+meteor_scene = ExtResource("2_4mx7v")
+bullet_scene = ExtResource("3_qdnbx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_14b2x")

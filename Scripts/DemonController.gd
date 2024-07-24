@@ -3,10 +3,11 @@ extends Area2D
 @export var speed = 100
 @export var meteor_scene: PackedScene
 @export var meteor_zone_w = 1000
+@export var bullet_scene:PackedScene
 
 var direction:Vector2
 enum Target { PLAYER, VILLAGER, CENTER, STILL }
-var objective = Target.CENTER
+var objective = Target.PLAYER
 
 var meteorstrike = 0
 var nextmeteor = 0

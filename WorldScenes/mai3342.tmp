@@ -67,6 +67,7 @@ texture = ExtResource("2_2g4mx")
 position = Vector2(5, 91)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(3, 3)
 
 [node name="HUD" parent="." instance=ExtResource("3_hi2gu")]
 visible = false
@@ -85,5 +86,4 @@ position = Vector2(1, 0)
 [connection signal="game_start" from="." to="Demon" method="_game_start"]
 [connection signal="died" from="Player" to="." method="_on_player_died"]
 [connection signal="update_health" from="Player" to="HUD" method="_update_health"]
-[connection signal="update_mana" from="Player" to="HUD" method="_update_mana"]
 [connection signal="update_stamina" from="Player" to="HUD" method="_update_stamina"]

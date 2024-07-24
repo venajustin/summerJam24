@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://dppgeqn8v37t6"]
+
+[ext_resource type="Texture2D" uid="uid://buolvkimhd1g5" path="res://icon.svg" id="1_kxc2w"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_px3qb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_kxc2w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4hai3"]
+radius = 77.1622
+
+[node name="Explosion" type="Area2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_px3qb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4hai3")
