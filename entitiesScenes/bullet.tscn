@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://x0okev48u71u"]
+[gd_scene load_steps=8 format=3 uid="uid://x0okev48u71u"]
 
 [ext_resource type="Texture2D" uid="uid://dkyoccbnk51u5" path="res://Assets/Projectiles/blue_energy_bullet.png" id="1_5qf5o"]
+[ext_resource type="Script" path="res://Scripts/bullet.gd" id="1_jsinj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j7qv2"]
 radius = 5.0
@@ -35,12 +36,13 @@ animations = [{
 }]
 
 [node name="Bullet" type="Area2D"]
+script = ExtResource("1_jsinj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(7, 0)
 shape = SubResource("CircleShape2D_j7qv2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+position = Vector2(-7, 0)
 sprite_frames = SubResource("SpriteFrames_wq6a3")
 frame_progress = 0.539693
