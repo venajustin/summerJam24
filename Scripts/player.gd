@@ -80,7 +80,8 @@ func _physics_process(delta):
 		hitstun += delta
 		if hitstun > hitstun_time + 1:
 			hitstun = 0
-			_hit_box.monitoring = true
+			
+
 	
 	timer += delta
 
@@ -95,10 +96,16 @@ func _game_start():
 	update_stamina.emit(stamina)
 	update_mana.emit(mana)
 
+func damage(val):
+	if hitstun > 0:
+		print ("damage negated from hitstun")
+		return
+	health -= val
+	update_health.emit(health)
+	hitstun = 1
 
 func _on_hitbox_area_entered(area):
-	if area.get_parent().has_method("get_damage"):
-		health -= area.get_parent().get_damage()
-		update_health.emit(health)
-		_hit_box.set_deferred("monitoring", false)
-		hitstun = 1
+	
+	if area.has_method("get_damage"):
+		damage(area.get_damage())
+

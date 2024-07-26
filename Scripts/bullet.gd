@@ -1,6 +1,7 @@
 extends Area2D
 
 @export var speed = 200
+@export var damage = 25
 
 var direction:Vector2 = Vector2.ZERO
 @onready var _sprite:AnimatedSprite2D = $AnimatedSprite2D
@@ -9,7 +10,8 @@ var direction:Vector2 = Vector2.ZERO
 func _ready():
 	$AnimatedSprite2D.play()
 
-
+func get_damage():
+	return damage
 
 func _physics_process(delta):
 	position += direction * speed * delta

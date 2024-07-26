@@ -1,0 +1,55 @@
+[gd_scene load_steps=10 format=3 uid="uid://de8uq7msyqwt7"]
+
+[ext_resource type="Script" path="res://Scripts/DemonController.gd" id="1_t2d4y"]
+[ext_resource type="PackedScene" uid="uid://cxd233mo0u48d" path="res://entitiesScenes/meteor.tscn" id="2_4mx7v"]
+[ext_resource type="PackedScene" uid="uid://x0okev48u71u" path="res://entitiesScenes/bullet.tscn" id="3_qdnbx"]
+[ext_resource type="Texture2D" uid="uid://2t0leyv40ld8" path="res://Assets/Monster/Monster Run SS.png" id="4_dpmst"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_05yqc"]
+atlas = ExtResource("4_dpmst")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtwe3"]
+atlas = ExtResource("4_dpmst")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2nim"]
+atlas = ExtResource("4_dpmst")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_14b2x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_05yqc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qtwe3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r2nim")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mpdal"]
+radius = 9.0
+height = 52.0
+
+[node name="Demon" type="Area2D"]
+script = ExtResource("1_t2d4y")
+meteor_scene = ExtResource("2_4mx7v")
+bullet_scene = ExtResource("3_qdnbx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_14b2x")
+frame_progress = 0.553713
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_mpdal")
+
+[node name="BulletOrigin" type="Node2D" parent="."]
+position = Vector2(1, -18)

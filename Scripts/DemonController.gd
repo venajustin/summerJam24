@@ -1,15 +1,20 @@
 extends Area2D
 
-@export var base_speed = 25
-@export var lunge_mult = 3
-@export var lunge_duration = 1
-@export var base_lunge_time = 2
-@export var lunge_time_variation = 4
-@export var side_step_variation = .25
-var speed = 100
+@export var base_speed:int = 25
+@export var lunge_mult:float = 3
+@export var lunge_duration:float = 1
+@export var base_lunge_time:float = 2
+@export var lunge_time_variation:float = 4
+@export var side_step_variation:float = .5
+var speed:int = 100
 @export var meteor_scene: PackedScene
-@export var meteor_zone_w = 1000
+@export var meteor_zone_w:int = 1000
 @export var bullet_scene: PackedScene
+@export var bullet_spray_duration:float = .5
+@export var bullet_spray_time:float = 1
+@export var bullet_spray_angle:float = .25
+@export var bullet_spray_frequency:float = .1
+var between_bullets_time:float = 0
 
 var direction:Vector2
 enum Target { PLAYER, VILLAGER, CENTER, STILL }
@@ -70,11 +75,20 @@ func _physics_process(delta):
 		
 	position += delta * speed * direction
 	
-	if attackcooldown < 2:
+	if objective == Target.PLAYER:
+
 		attackcooldown += delta
-	elif objective == Target.PLAYER:
-		attack()
-		attackcooldown = 0
+		if attackcooldown < bullet_spray_time:
+			pass
+		elif attackcooldown < bullet_spray_time + bullet_spray_duration:
+			if between_bullets_time > bullet_spray_frequency:
+				between_bullets_time = 0
+				var dirOffset:float = randf() * bullet_spray_angle - (bullet_spray_angle / 2.0)
+				attack(dirOffset)
+			else:
+				between_bullets_time += delta
+		else:
+			attackcooldown = 0
 	
 	if meteorstrike > 0:
 		if nextmeteor > .1:
@@ -88,9 +102,9 @@ func _physics_process(delta):
 		meteorstrike -= delta
 	
 
-func attack():
+func attack(offset: float):
 	var bullet = bullet_scene.instantiate()
-	bullet.initialize(position + bulletorigin, (_player.position - position).normalized())
+	bullet.initialize(position + bulletorigin, (_player.position - (position + bulletorigin)).normalized().rotated(offset))
 	_world.add_child(bullet)
 
 func _game_end():
