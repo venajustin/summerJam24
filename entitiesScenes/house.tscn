@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://dr180t78oi1vc"]
+
+[ext_resource type="Script" path="res://Scripts/house.gd" id="1_ec2m7"]
+[ext_resource type="Texture2D" uid="uid://cim7gehcfhypu" path="res://Assets/Environment/House 4 phase destruction.png" id="1_ixp87"]
+[ext_resource type="PackedScene" uid="uid://nw43l5if1lny" path="res://entitiesScenes/villager.tscn" id="2_gwsgc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5dtgc"]
+size = Vector2(128, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jx5of"]
+atlas = ExtResource("1_ixp87")
+region = Rect2(0, 0, 130, 68)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ok4tc"]
+atlas = ExtResource("1_ixp87")
+region = Rect2(130, 0, 130, 68)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8c6qy"]
+atlas = ExtResource("1_ixp87")
+region = Rect2(260, 0, 130, 68)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sc4cn"]
+atlas = ExtResource("1_ixp87")
+region = Rect2(390, 0, 130, 68)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jobux"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jx5of")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ok4tc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8c6qy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sc4cn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="StaticBody2D" type="StaticBody2D"]
+script = ExtResource("1_ec2m7")
+_villager_scene = ExtResource("2_gwsgc")
+
+[node name="HouseArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HouseArea"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_5dtgc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_jobux")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_5dtgc")
+
+[connection signal="area_entered" from="HouseArea" to="." method="_on_area_entered"]
+[connection signal="area_exited" from="HouseArea" to="." method="_on_area_exited"]

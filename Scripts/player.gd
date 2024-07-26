@@ -28,6 +28,8 @@ signal died
 @onready var _collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var _hit_box: Area2D = $Hitbox
 
+@export var defaultColor:Color = Color.WHITE
+@export var hitColor:Color = Color(1, 0.1803921610117, 0.20000000298023)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -78,8 +80,15 @@ func _physics_process(delta):
 	
 	if hitstun > 0:
 		hitstun += delta
-		if hitstun > hitstun_time + 1:
+		if hitstun < hitstun_time * .33 + 1:
+			modulate = hitColor 
+		elif hitstun < hitstun_time * .66 + 1:
+			modulate = defaultColor
+		elif hitstun < hitstun_time + 1:
+			modulate = hitColor
+		elif hitstun > hitstun_time + 1:
 			hitstun = 0
+			modulate = defaultColor
 			
 
 	
@@ -100,6 +109,7 @@ func damage(val):
 	if hitstun > 0:
 		print ("damage negated from hitstun")
 		return
+	modulate = hitColor
 	health -= val
 	update_health.emit(health)
 	hitstun = 1

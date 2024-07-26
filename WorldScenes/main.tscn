@@ -1,12 +1,102 @@
-[gd_scene load_steps=5 format=3 uid="uid://cnw01pvvbha64"]
+[gd_scene load_steps=10 format=3 uid="uid://cnw01pvvbha64"]
 
 [ext_resource type="PackedScene" uid="uid://dyujv2upnb8lb" path="res://entitiesScenes/player.tscn" id="1_phvr7"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_us0ks"]
+[ext_resource type="PackedScene" uid="uid://b7itgp8dkbmd4" path="res://WorldScenes/background.tscn" id="2_y4o6d"]
 [ext_resource type="PackedScene" uid="uid://doa818g01xn4" path="res://WorldScenes/hud.tscn" id="3_hi2gu"]
 [ext_resource type="PackedScene" uid="uid://de8uq7msyqwt7" path="res://entitiesScenes/demon.tscn" id="5_yn438"]
+[ext_resource type="PackedScene" uid="uid://dr180t78oi1vc" path="res://entitiesScenes/house.tscn" id="6_kka3i"]
+[ext_resource type="PackedScene" uid="uid://nw43l5if1lny" path="res://entitiesScenes/villager.tscn" id="7_60ko4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6tqu7"]
+size = Vector2(67, 1179)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xqllf"]
+size = Vector2(1676, 68)
 
 [node name="Main" type="Node"]
 script = ExtResource("1_us0ks")
+
+[node name="Border" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Border"]
+position = Vector2(-511.5, 303.5)
+shape = SubResource("RectangleShape2D_6tqu7")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Border"]
+position = Vector2(1090, 302)
+shape = SubResource("RectangleShape2D_6tqu7")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Border"]
+position = Vector2(291, -318)
+shape = SubResource("RectangleShape2D_xqllf")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Border"]
+position = Vector2(290, 925)
+shape = SubResource("RectangleShape2D_xqllf")
+
+[node name="TileMap2" parent="." instance=ExtResource("2_y4o6d")]
+position = Vector2(-1, -1)
+
+[node name="House" parent="." instance=ExtResource("6_kka3i")]
+position = Vector2(-100, 49)
+
+[node name="House4" parent="." instance=ExtResource("6_kka3i")]
+position = Vector2(-143, 218)
+
+[node name="House5" parent="." instance=ExtResource("6_kka3i")]
+position = Vector2(106, 223)
+
+[node name="House6" parent="." instance=ExtResource("6_kka3i")]
+position = Vector2(468, 88)
+
+[node name="House7" parent="." instance=ExtResource("6_kka3i")]
+position = Vector2(275, -151)
+
+[node name="House8" parent="." instance=ExtResource("6_kka3i")]
+position = Vector2(573, -83)
+
+[node name="House9" parent="." instance=ExtResource("6_kka3i")]
+position = Vector2(421, 285)
+
+[node name="House10" parent="." instance=ExtResource("6_kka3i")]
+position = Vector2(36, 504)
+
+[node name="House11" parent="." instance=ExtResource("6_kka3i")]
+position = Vector2(391, 493)
+
+[node name="House12" parent="." instance=ExtResource("6_kka3i")]
+position = Vector2(84, 650)
+
+[node name="House13" parent="." instance=ExtResource("6_kka3i")]
+position = Vector2(-230, 455)
+
+[node name="House15" parent="." instance=ExtResource("6_kka3i")]
+position = Vector2(-202, 679)
+
+[node name="House16" parent="." instance=ExtResource("6_kka3i")]
+position = Vector2(709, 615)
+
+[node name="House17" parent="." instance=ExtResource("6_kka3i")]
+position = Vector2(675, 391)
+
+[node name="House18" parent="." instance=ExtResource("6_kka3i")]
+position = Vector2(788, 164)
+
+[node name="House19" parent="." instance=ExtResource("6_kka3i")]
+position = Vector2(844, -55)
+
+[node name="House20" parent="." instance=ExtResource("6_kka3i")]
+position = Vector2(926, 453)
+
+[node name="House14" parent="." instance=ExtResource("6_kka3i")]
+position = Vector2(383, 680)
+
+[node name="House2" parent="." instance=ExtResource("6_kka3i")]
+position = Vector2(145, 24)
+
+[node name="House3" parent="." instance=ExtResource("6_kka3i")]
+position = Vector2(-194, -104)
 
 [node name="Player" parent="." instance=ExtResource("1_phvr7")]
 position = Vector2(5, 91)
@@ -21,6 +111,12 @@ position = Vector2(1, -82)
 
 [node name="Village_Center" type="Node2D" parent="."]
 position = Vector2(1, 0)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("7_60ko4")]
+position = Vector2(-263, 41)
+
+[node name="CharacterBody2D2" parent="." instance=ExtResource("7_60ko4")]
+position = Vector2(-291, 206)
 
 [connection signal="game_end" from="." to="HUD" method="_game_end"]
 [connection signal="game_end" from="." to="Demon" method="_game_end"]

@@ -37,6 +37,10 @@ animations = [{
 
 [node name="Bullet" type="Area2D"]
 script = ExtResource("1_jsinj")
+speed = null
+damage = null
+max_lifetime = null
+max_bounces = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_j7qv2")
@@ -51,12 +55,16 @@ frame_progress = 0.539693
 
 [node name="X1" type="RayCast2D" parent="Rays"]
 target_position = Vector2(10, 0)
+collide_with_areas = true
 
 [node name="X2" type="RayCast2D" parent="Rays"]
 target_position = Vector2(-10, 0)
+collide_with_areas = true
 
 [node name="Y1" type="RayCast2D" parent="Rays"]
 target_position = Vector2(0, 10)
+collide_with_areas = true
 
 [node name="Y2" type="RayCast2D" parent="Rays"]
 target_position = Vector2(0, -10)
+collide_with_areas = true
