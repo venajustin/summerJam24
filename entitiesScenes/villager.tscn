@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://nw43l5if1lny"]
+
+[ext_resource type="Script" path="res://Scripts/villager.gd" id="1_kcvgs"]
+[ext_resource type="Texture2D" uid="uid://dtkq72nt3clky" path="res://Assets/Environment/Rune Decal.png" id="2_gjqh2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ppcd5"]
+radius = 20.0
+height = 46.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fgaab"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_gjqh2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h8utr"]
+radius = 181.025
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+texture_filter = 1
+motion_mode = 1
+script = ExtResource("1_kcvgs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_ppcd5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_fgaab")
+
+[node name="Vision" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vision"]
+shape = SubResource("CircleShape2D_h8utr")
+
+[node name="Rays" type="Node2D" parent="."]
+
+[node name="X1" type="RayCast2D" parent="Rays"]
+target_position = Vector2(10, 0)
+
+[node name="X2" type="RayCast2D" parent="Rays"]
+target_position = Vector2(-10, 0)
+
+[node name="Y1" type="RayCast2D" parent="Rays"]
+target_position = Vector2(0, 10)
+
+[node name="Y2" type="RayCast2D" parent="Rays"]
+target_position = Vector2(0, -10)
+
+[connection signal="area_entered" from="Vision" to="." method="_on_vision_area_entered"]
+[connection signal="area_exited" from="Vision" to="." method="_on_vision_area_exited"]

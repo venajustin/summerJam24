@@ -1,18 +1,20 @@
 extends Area2D
 
-@export var base_speed:int = 25
+@export var base_speed:int = 75
 @export var lunge_mult:float = 3
+@export var house_mult:float = .25
+var house_speed:float = 1
 @export var lunge_duration:float = 1
 @export var base_lunge_time:float = 2
 @export var lunge_time_variation:float = 4
-@export var side_step_variation:float = .5
+@export var side_step_variation:float = .5 * PI
 var speed:int = 100
 @export var meteor_scene: PackedScene
 @export var meteor_zone_w:int = 1000
 @export var bullet_scene: PackedScene
 @export var bullet_spray_duration:float = .5
 @export var bullet_spray_time:float = 1
-@export var bullet_spray_angle:float = .25
+@export var bullet_spray_angle:float = .25 * PI
 @export var bullet_spray_frequency:float = .1
 var between_bullets_time:float = 0
 
@@ -34,10 +36,12 @@ var sideStepTheta: float = 0.0
 @onready var _village_center:Node2D = $"../Village_Center"
 @onready var _world = $"../"
 @onready var _animation_controller: AnimatedSprite2D = $"AnimatedSprite2D"
+@onready var _tentacle_animation_controller: AnimatedSprite2D = $"AnimatedSprite2D2"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_animation_controller.play()
+	_tentacle_animation_controller.play("Idle")
 	bulletorigin = $BulletOrigin.position
 
 
@@ -73,7 +77,7 @@ func _physics_process(delta):
 	elif objective == Target.VILLAGER:
 		pass # implement going to the villager that triggered this and eat them
 		
-	position += delta * speed * direction
+	position += delta * speed * direction * house_speed
 	
 	if objective == Target.PLAYER:
 
@@ -104,7 +108,7 @@ func _physics_process(delta):
 
 func attack(offset: float):
 	var bullet = bullet_scene.instantiate()
-	bullet.initialize(position + bulletorigin, (_player.position - (position + bulletorigin)).normalized().rotated(offset))
+	bullet.initialize(position + bulletorigin, (_player.position - (position + bulletorigin)).normalized().rotated(offset), _player, self)
 	_world.add_child(bullet)
 
 func _game_end():
@@ -115,3 +119,13 @@ func _game_start():
 	objective = Target.PLAYER
 	set_physics_process(true)
 
+
+
+func _on_area_entered(area):
+	if area.name == "HouseArea":
+		house_speed = house_mult
+
+
+func _on_area_exited(area):
+	if area.name == "HouseArea":
+		house_speed = 1
