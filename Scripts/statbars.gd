@@ -43,5 +43,5 @@ func _game_end():
 	_death_overlay.visible = true
 
 
-func _on_main_villagers_eaten(numVillagers):
-	_num_villagers_text.text = str(numVillagers) 
+func _on_main_villagers_eaten(numVillagers, total):
+	_num_villagers_text.text = str(numVillagers) + " / " + str(total)

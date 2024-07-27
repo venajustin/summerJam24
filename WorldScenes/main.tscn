@@ -117,6 +117,7 @@ position = Vector2(1, 0)
 [connection signal="game_start" from="." to="Player" method="_game_start"]
 [connection signal="game_start" from="." to="HUD" method="_game_start"]
 [connection signal="game_start" from="." to="Demon" method="_game_start"]
+[connection signal="next_phase" from="." to="Demon" method="_on_main_next_phase"]
 [connection signal="villagers_eaten" from="." to="HUD" method="_on_main_villagers_eaten"]
 [connection signal="died" from="Player" to="." method="_on_player_died"]
 [connection signal="update_health" from="Player" to="HUD" method="_update_health"]

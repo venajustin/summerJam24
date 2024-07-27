@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var speed = 60.0
 @onready var _demon = $"../Demon"
 @onready var _player = $"../Player"
+@onready var _animator:AnimatedSprite2D = $AnimatedSprite2D
 
 var direction: Vector2 = Vector2.ZERO
 @onready var rays:Array[Node] = $Rays.get_children()
@@ -45,6 +46,17 @@ func _physics_process(delta):
 		finalspeed *= speedboost_ammount
 		speedboost_left -= delta
 	velocity = finalspeed * direction
+	
+	var norm_vel = velocity.normalized()
+	if norm_vel.x > .1:
+		_animator.play("side")
+		_animator.flip_h = false
+	elif norm_vel.x < -.1:
+		_animator.play("towards")
+		_animator.flip_h = false
+	else:
+		_animator.play("side")
+		_animator.flip_h = true
 	
 	move_and_slide()
 

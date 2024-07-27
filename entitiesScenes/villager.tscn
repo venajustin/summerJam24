@@ -1,11 +1,28 @@
-[gd_scene load_steps=10 format=3 uid="uid://nw43l5if1lny"]
+[gd_scene load_steps=15 format=3 uid="uid://nw43l5if1lny"]
 
 [ext_resource type="Script" path="res://Scripts/villager.gd" id="1_kcvgs"]
+[ext_resource type="Texture2D" uid="uid://b65is6d0sv7ss" path="res://Assets/NPCs/Villager 1 Panic SIDE VIEW.png" id="2_j2us1"]
 [ext_resource type="Texture2D" uid="uid://d2msmv7y38hsw" path="res://Assets/NPCs/Villager 1 Panic .png" id="2_l1gq4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ppcd5"]
 radius = 7.0
 height = 50.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0ewk"]
+atlas = ExtResource("2_j2us1")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e2wjp"]
+atlas = ExtResource("2_j2us1")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vpvgc"]
+atlas = ExtResource("2_j2us1")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2x0g2"]
+atlas = ExtResource("2_j2us1")
+region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0dxg5"]
 atlas = ExtResource("2_l1gq4")
@@ -27,6 +44,23 @@ region = Rect2(384, 0, 128, 128)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_k0ewk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e2wjp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vpvgc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2x0g2")
+}],
+"loop": true,
+"name": &"side",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_0dxg5")
 }, {
 "duration": 1.0,
@@ -39,7 +73,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_32bkm")
 }],
 "loop": true,
-"name": &"default",
+"name": &"towards",
 "speed": 10.0
 }]
 
@@ -56,7 +90,7 @@ shape = SubResource("CapsuleShape2D_ppcd5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fgaab")
-frame_progress = 0.27556
+animation = &"side"
 
 [node name="Vision" type="Area2D" parent="."]
 
@@ -66,16 +100,16 @@ shape = SubResource("CircleShape2D_h8utr")
 [node name="Rays" type="Node2D" parent="."]
 
 [node name="X1" type="RayCast2D" parent="Rays"]
-target_position = Vector2(10, 0)
+target_position = Vector2(14, 0)
 
 [node name="X2" type="RayCast2D" parent="Rays"]
-target_position = Vector2(-10, 0)
+target_position = Vector2(-14, -1)
 
 [node name="Y1" type="RayCast2D" parent="Rays"]
-target_position = Vector2(0, 10)
+target_position = Vector2(-1, 37)
 
 [node name="Y2" type="RayCast2D" parent="Rays"]
-target_position = Vector2(0, -10)
+target_position = Vector2(0, -39)
 
 [connection signal="area_entered" from="Vision" to="." method="_on_vision_area_entered"]
 [connection signal="area_exited" from="Vision" to="." method="_on_vision_area_exited"]

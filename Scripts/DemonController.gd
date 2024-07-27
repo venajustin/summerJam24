@@ -20,16 +20,26 @@ var speed:int = 100
 @export var bullet_spray_frequency:float = .1
 var between_bullets_time:float = 0
 
+@export var bullet_splash_frequency:float = .2
+@export var bullet_splash_duration:float = .5
+@export var bullet_splash_time_between:float = 2
+var bullet_splash_time:float = 0
+var last_splash:float = 0
+
 var direction:Vector2
 enum Target { PLAYER, VILLAGER, CENTER, STILL }
 var objective = Target.VILLAGER
+
+var phase:int = 0
+
 var villagerTarget:Node2D = null
 
 var meteorstrike = 0
 var nextmeteor = 0
 
 var attackcooldown = 0
-var bulletorigin:Vector2 = Vector2.ZERO
+var bulletorigin:Vector2 = Vector2.ZERO 
+
 
 var lungeTime: float = 0
 var nextLunge: float = 2.5
@@ -44,8 +54,11 @@ var sideStepTheta: float = 0.0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_animation_controller.play()
+	_animation_controller.frame = 0
 	_tentacle_animation_controller.play("Idle")
+	_tentacle_animation_controller.frame = 0
 	bulletorigin = $BulletOrigin.position
+	_tentacle_animation_controller.visible = false
 
 
 
@@ -83,7 +96,7 @@ func _physics_process(delta):
 
 	
 	if objective == Target.PLAYER:
-
+		
 		attackcooldown += delta
 		if attackcooldown < bullet_spray_time:
 			pass
@@ -96,6 +109,18 @@ func _physics_process(delta):
 				between_bullets_time += delta
 		else:
 			attackcooldown = 0
+		
+		if phase > 0:
+			print(bullet_splash_time)
+			bullet_splash_time += delta
+			if bullet_splash_time > bullet_splash_time_between:
+				if bullet_splash_time - last_splash > bullet_splash_frequency:
+					last_splash = bullet_splash_time
+					for i in 8:
+						attack(PI / 4 * i)
+			if bullet_splash_time > bullet_splash_time_between + bullet_splash_duration:
+				bullet_splash_time = 0
+				last_splash = 0
 	
 	if meteorstrike > 0:
 		if nextmeteor > .1:
@@ -111,6 +136,12 @@ func _physics_process(delta):
 	if objective == Target.VILLAGER:
 		direction = (villagerTarget.position - position).normalized()
 		
+	if direction.x < 0:
+		_animation_controller.flip_h = true
+		_tentacle_animation_controller.flip_h = true
+	else:
+		_animation_controller.flip_h = false
+		_tentacle_animation_controller.flip_h = false
 	position += delta * speed * direction * house_speed
 		
 
@@ -152,3 +183,9 @@ func _on_vision_body_entered(body):
 		if body.has_method("stun"):
 			objective = Target.VILLAGER
 			villagerTarget = body
+
+
+func _on_main_next_phase():
+	phase += 1
+	if phase > 0:
+		_tentacle_animation_controller.visible = true
