@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cnw01pvvbha64"]
+[gd_scene load_steps=12 format=3 uid="uid://cnw01pvvbha64"]
 
 [ext_resource type="PackedScene" uid="uid://dyujv2upnb8lb" path="res://entitiesScenes/player.tscn" id="1_phvr7"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_us0ks"]
@@ -14,6 +14,16 @@ size = Vector2(67, 1179)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xqllf"]
 size = Vector2(1676, 68)
+
+[sub_resource type="Environment" id="Environment_p56hx"]
+background_mode = 3
+tonemap_mode = 2
+tonemap_exposure = 0.85
+glow_enabled = true
+glow_intensity = 2.6
+glow_blend_mode = 1
+glow_hdr_threshold = 0.1
+adjustment_brightness = 0.8
 
 [node name="Main" type="Node"]
 script = ExtResource("1_us0ks")
@@ -136,7 +146,7 @@ position = Vector2(1, 0)
 color = Color(0.145098, 0.0941176, 0.12549, 1)
 
 [node name="FloatingLamp" parent="." instance=ExtResource("8_dhs0h")]
-position = Vector2(271, 123)
+position = Vector2(187, 161)
 
 [node name="FloatingLamp3" parent="." instance=ExtResource("8_dhs0h")]
 position = Vector2(-108, 168)
@@ -176,6 +186,9 @@ position = Vector2(386, 652)
 
 [node name="FloatingLamp12" parent="." instance=ExtResource("8_dhs0h")]
 position = Vector2(885, 647)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_p56hx")
 
 [connection signal="game_end" from="." to="." method="_on_game_end"]
 [connection signal="game_end" from="." to="HUD" method="_game_end"]
