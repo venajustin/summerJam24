@@ -44,10 +44,12 @@ func _physics_process(delta):
 	if stamina > 20:
 		can_sprint = true
 	if Input.is_action_pressed("sprint") && stamina > 1 && can_sprint:
+		_animated_sprite.play("run")
 		speed = run_speed
 		if stamina > 0:
 			stamina -= delta * stamina_loss_mult
 	else:
+		_animated_sprite.play("walk")
 		if stamina < 20:
 			can_sprint = false
 		if stamina < stamina_max:
@@ -61,7 +63,7 @@ func _physics_process(delta):
 	direction.y = Input.get_axis("move_up", "move_down")
 	
 	if direction:
-		_animated_sprite.play("walk")
+
 		velocity = direction.normalized() * speed
 		_animated_sprite.flip_h = direction.x < 0
 	else:

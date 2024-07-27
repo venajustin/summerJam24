@@ -36,6 +36,7 @@ position = Vector2(290, 925)
 shape = SubResource("RectangleShape2D_xqllf")
 
 [node name="TileMap2" parent="." instance=ExtResource("2_y4o6d")]
+texture_filter = 1
 position = Vector2(-1, -1)
 
 [node name="House" parent="." instance=ExtResource("6_kka3i")]
