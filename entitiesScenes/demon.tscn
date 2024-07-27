@@ -149,15 +149,14 @@ radius = 160.028
 
 [node name="Demon" type="Area2D"]
 script = ExtResource("1_t2d4y")
-base_speed = 100
-lunge_mult = 2.0
+lunge_mult = 1.75
 meteor_scene = ExtResource("2_4mx7v")
 bullet_scene = ExtResource("3_qdnbx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_14b2x")
-frame_progress = 0.600107
+frame_progress = 0.41387
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

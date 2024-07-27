@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://kw4puokcehrf"
+path="res://.godot/imported/zapsplat_warfare_bomb_drop_explode_designed_explosion_003_93130.mp3-ced9cf3ec87536f69e2bf9dfc79a8b5a.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sound FX/ZapSplat/Explosions/zapsplat_warfare_bomb_drop_explode_designed_explosion_003_93130.mp3"
+dest_files=["res://.godot/imported/zapsplat_warfare_bomb_drop_explode_designed_explosion_003_93130.mp3-ced9cf3ec87536f69e2bf9dfc79a8b5a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

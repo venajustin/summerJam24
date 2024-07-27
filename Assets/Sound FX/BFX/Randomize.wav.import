@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://byvtlk7c58h22"
+path="res://.godot/imported/Randomize.wav-f3bc27e67efc94da00b4ea36a479bacb.sample"
+
+[deps]
+
+source_file="res://Assets/Sound FX/BFX/Randomize.wav"
+dest_files=["res://.godot/imported/Randomize.wav-f3bc27e67efc94da00b4ea36a479bacb.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

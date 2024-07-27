@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://uiy42rqjb1ql"
+path="res://.godot/imported/sound_spark_Fire_Spell_Soul_Fire_03.mp3-ca588d675515492e644253061af4c616.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sound FX/ZapSplat/Shooting/sound_spark_Fire_Spell_Soul_Fire_03.mp3"
+dest_files=["res://.godot/imported/sound_spark_Fire_Spell_Soul_Fire_03.mp3-ca588d675515492e644253061af4c616.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

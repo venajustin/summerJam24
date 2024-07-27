@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://osoy8uiix6nj"
+path="res://.godot/imported/zapsplat_science_fiction_weapon_explosion_whoosh_004_92706.mp3-bbefb84727970189bbd93424bb8650bf.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sound FX/ZapSplat/Shooting/zapsplat_science_fiction_weapon_explosion_whoosh_004_92706.mp3"
+dest_files=["res://.godot/imported/zapsplat_science_fiction_weapon_explosion_whoosh_004_92706.mp3-bbefb84727970189bbd93424bb8650bf.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

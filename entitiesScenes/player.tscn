@@ -231,13 +231,15 @@ height = 48.0
 script = ExtResource("1_imu6a")
 health_max = 200
 stamina_max = 200
+stamina_gain_mult = 25
 mana_max = 0
+hitstun_time = 1.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_umh2c")
 animation = &"run"
-frame_progress = 0.489528
+frame_progress = 0.402256
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 2)

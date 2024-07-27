@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bhwk8862y5rjc"
+path="res://.godot/imported/zapsplat_foley_rocks_bid_and_small_and_debris_short_landslide_slip_21725.mp3-bc1747e46f458f6fe4592e974dac344c.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sound FX/ZapSplat/Movement/zapsplat_foley_rocks_bid_and_small_and_debris_short_landslide_slip_21725.mp3"
+dest_files=["res://.godot/imported/zapsplat_foley_rocks_bid_and_small_and_debris_short_landslide_slip_21725.mp3-bc1747e46f458f6fe4592e974dac344c.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

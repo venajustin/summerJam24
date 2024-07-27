@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://xfxgoh3mtw8r"
+path="res://.godot/imported/zapsplat_sport_badminton_racket_fast_swing_whoosh_002_76397.mp3-9dc6c4622aa968ff1a6117608b91dd71.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sound FX/ZapSplat/Movement/zapsplat_sport_badminton_racket_fast_swing_whoosh_002_76397.mp3"
+dest_files=["res://.godot/imported/zapsplat_sport_badminton_racket_fast_swing_whoosh_002_76397.mp3-9dc6c4622aa968ff1a6117608b91dd71.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

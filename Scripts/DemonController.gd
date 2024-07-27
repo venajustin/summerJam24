@@ -34,12 +34,17 @@ var phase:int = 0
 
 var villagerTarget:Node2D = null
 
-var meteorstrike = 0
+@export var meteor_shower_time_between:float = 7
+var meteor_shower_time:float = 0
+var meteorstrike = -1
 var nextmeteor = 0
 
 var attackcooldown = 0
 var bulletorigin:Vector2 = Vector2.ZERO 
 
+
+var summonzones:Array[Node2D] = []
+var target_summon_zone:Node2D = null
 
 var lungeTime: float = 0
 var nextLunge: float = 2.5
@@ -59,6 +64,13 @@ func _ready():
 	_tentacle_animation_controller.frame = 0
 	bulletorigin = $BulletOrigin.position
 	_tentacle_animation_controller.visible = false
+	
+	var all_siblings = get_parent().get_children()
+	for sibling in all_siblings:
+		if sibling.has_meta("summonzone"):
+			summonzones.push_front(sibling)
+	print(summonzones)
+	
 
 
 
@@ -83,10 +95,14 @@ func _physics_process(delta):
 		
 		direction = (_player.position - position).normalized().rotated(sideStepTheta)
 	elif objective == Target.CENTER:
-		direction = (_village_center.position - position)
+		
+		if target_summon_zone == null:
+			target_summon_zone = find_close_zone()
+		direction = (target_summon_zone.position - position)
 		if direction.length() < 10:
 			direction = Vector2.ZERO
 			meteorstrike = 4
+			target_summon_zone = null
 			objective = Target.STILL
 		else:
 			direction = direction.normalized()
@@ -111,7 +127,7 @@ func _physics_process(delta):
 			attackcooldown = 0
 		
 		if phase > 0:
-			print(bullet_splash_time)
+
 			bullet_splash_time += delta
 			if bullet_splash_time > bullet_splash_time_between:
 				if bullet_splash_time - last_splash > bullet_splash_frequency:
@@ -121,9 +137,24 @@ func _physics_process(delta):
 			if bullet_splash_time > bullet_splash_time_between + bullet_splash_duration:
 				bullet_splash_time = 0
 				last_splash = 0
+		
+		if phase > 1:
+			meteor_shower_time += delta
+			if meteor_shower_time > meteor_shower_time_between:
+				meteor_shower_time = 0
+				objective = Target.CENTER
+				target_summon_zone = find_close_zone()
+		
+	if Input.is_key_pressed(KEY_F13):
+		objective = Target.CENTER
+		target_summon_zone = find_close_zone()
+		
 	
+	if meteorstrike <= 0 && meteorstrike > -1:
+		meteorstrike = -1
+		objective = Target.PLAYER
 	if meteorstrike > 0:
-		if nextmeteor > .1:
+		if nextmeteor > .05:
 			nextmeteor = 0
 			var meteor_location = position + Vector2(randf() * meteor_zone_w - (meteor_zone_w / 2), randf() * meteor_zone_w - (meteor_zone_w / 2))
 			var meteor = meteor_scene.instantiate()
@@ -133,8 +164,10 @@ func _physics_process(delta):
 		nextmeteor += delta
 		meteorstrike -= delta
 	
-	if objective == Target.VILLAGER:
+	if objective == Target.VILLAGER && villagerTarget != null:
 		direction = (villagerTarget.position - position).normalized()
+			
+		
 		
 	if direction.x < 0:
 		_animation_controller.flip_h = true
@@ -172,10 +205,12 @@ func _on_area_exited(area):
 
 func _on_body_entered(body):
 	if body.has_method("stun"):
+		objective = Target.PLAYER
 		print("villager eaten")
 		body.queue_free()
+		villagerTarget = null
 		eat_villager.emit()
-		objective = Target.PLAYER
+
 
 
 func _on_vision_body_entered(body):
@@ -189,3 +224,13 @@ func _on_main_next_phase():
 	phase += 1
 	if phase > 0:
 		_tentacle_animation_controller.visible = true
+
+func find_close_zone() -> Node2D:
+	var closest_zone:Node2D = summonzones[0]
+	var closest_dist:float = summonzones[0].position.distance_to(position)
+	for zone in summonzones:
+		if zone.position.distance_to(position) < closest_dist:
+			closest_dist = zone.position.distance_to(position)
+			closest_zone = zone
+	return closest_zone
+	

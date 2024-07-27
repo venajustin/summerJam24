@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://5ka7yufynlnv"
+path="res://.godot/imported/zapsplat_explosion_big_fireball_001_89751.mp3-b4212a9bf9cace86d317a2ec9e9a004e.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sound FX/ZapSplat/Explosions/zapsplat_explosion_big_fireball_001_89751.mp3"
+dest_files=["res://.godot/imported/zapsplat_explosion_big_fireball_001_89751.mp3-b4212a9bf9cace86d317a2ec9e9a004e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

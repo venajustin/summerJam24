@@ -103,10 +103,10 @@ shape = SubResource("CircleShape2D_h8utr")
 target_position = Vector2(14, 0)
 
 [node name="X2" type="RayCast2D" parent="Rays"]
-target_position = Vector2(-14, -1)
+target_position = Vector2(-14, 0)
 
 [node name="Y1" type="RayCast2D" parent="Rays"]
-target_position = Vector2(-1, 37)
+target_position = Vector2(0, 37)
 
 [node name="Y2" type="RayCast2D" parent="Rays"]
 target_position = Vector2(0, -39)

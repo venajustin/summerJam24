@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cpsxpci1rrpgr"
+path="res://.godot/imported/sound_spark_Fire_Spell_Ignite_01.mp3-84af968efa05c197486539e1e3ba6f11.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sound FX/ZapSplat/Shooting/sound_spark_Fire_Spell_Ignite_01.mp3"
+dest_files=["res://.godot/imported/sound_spark_Fire_Spell_Ignite_01.mp3-84af968efa05c197486539e1e3ba6f11.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

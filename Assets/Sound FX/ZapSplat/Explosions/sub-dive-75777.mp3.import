@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dybgq73b763yl"
+path="res://.godot/imported/sub-dive-75777.mp3-5ba474762c97ce5d63736c4087182e1f.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sound FX/ZapSplat/Explosions/sub-dive-75777.mp3"
+dest_files=["res://.godot/imported/sub-dive-75777.mp3-5ba474762c97ce5d63736c4087182e1f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -124,4 +124,5 @@ func damage(val):
 func _on_hitbox_area_entered(area):
 	if area.has_method("get_damage"):
 		damage(area.get_damage())
+		area.queue_free()
 

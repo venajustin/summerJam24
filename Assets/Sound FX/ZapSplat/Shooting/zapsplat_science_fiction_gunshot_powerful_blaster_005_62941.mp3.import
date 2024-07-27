@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bg21k0w8qg1ao"
+path="res://.godot/imported/zapsplat_science_fiction_gunshot_powerful_blaster_005_62941.mp3-36f57a2821ec08e55c5972d2ddbd5086.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sound FX/ZapSplat/Shooting/zapsplat_science_fiction_gunshot_powerful_blaster_005_62941.mp3"
+dest_files=["res://.godot/imported/zapsplat_science_fiction_gunshot_powerful_blaster_005_62941.mp3-36f57a2821ec08e55c5972d2ddbd5086.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

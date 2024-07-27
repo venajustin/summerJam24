@@ -1,0 +1,157 @@
+[gd_scene load_steps=10 format=3 uid="uid://cnw01pvvbha64"]
+
+[ext_resource type="PackedScene" uid="uid://dyujv2upnb8lb" path="res://entitiesScenes/player.tscn" id="1_phvr7"]
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_us0ks"]
+[ext_resource type="PackedScene" uid="uid://b7itgp8dkbmd4" path="res://WorldScenes/background.tscn" id="2_y4o6d"]
+[ext_resource type="PackedScene" uid="uid://doa818g01xn4" path="res://WorldScenes/hud.tscn" id="3_hi2gu"]
+[ext_resource type="PackedScene" uid="uid://de8uq7msyqwt7" path="res://entitiesScenes/demon.tscn" id="5_yn438"]
+[ext_resource type="PackedScene" uid="uid://dr180t78oi1vc" path="res://entitiesScenes/house.tscn" id="6_kka3i"]
+[ext_resource type="PackedScene" uid="uid://b1xgckt7uhkw1" path="res://WorldScenes/summoning_circle.tscn" id="7_1xhu4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6tqu7"]
+size = Vector2(67, 1179)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xqllf"]
+size = Vector2(1676, 68)
+
+[node name="Main" type="Node"]
+script = ExtResource("1_us0ks")
+
+[node name="Border" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Border"]
+position = Vector2(-511.5, 303.5)
+shape = SubResource("RectangleShape2D_6tqu7")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Border"]
+position = Vector2(1090, 302)
+shape = SubResource("RectangleShape2D_6tqu7")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Border"]
+position = Vector2(291, -318)
+shape = SubResource("RectangleShape2D_xqllf")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Border"]
+position = Vector2(290, 925)
+shape = SubResource("RectangleShape2D_xqllf")
+
+[node name="TileMap2" parent="." instance=ExtResource("2_y4o6d")]
+texture_filter = 1
+position = Vector2(-1, -1)
+
+[node name="SummoningCircle" parent="." instance=ExtResource("7_1xhu4")]
+position = Vector2(-86, 45)
+metadata/summonzone = true
+
+[node name="SummoningCircle2" parent="." instance=ExtResource("7_1xhu4")]
+position = Vector2(651, 30)
+metadata/summonzone = true
+
+[node name="SummoningCircle3" parent="." instance=ExtResource("7_1xhu4")]
+position = Vector2(676, 383)
+metadata/summonzone = true
+
+[node name="SummoningCircle4" parent="." instance=ExtResource("7_1xhu4")]
+position = Vector2(-26, 600)
+metadata/summonzone = true
+
+[node name="House" parent="." instance=ExtResource("6_kka3i")]
+position = Vector2(-253, -8)
+
+[node name="House4" parent="." instance=ExtResource("6_kka3i")]
+position = Vector2(-251, 102)
+
+[node name="House5" parent="." instance=ExtResource("6_kka3i")]
+position = Vector2(77, 29)
+
+[node name="House6" parent="." instance=ExtResource("6_kka3i")]
+position = Vector2(363, -95)
+
+[node name="House7" parent="." instance=ExtResource("6_kka3i")]
+position = Vector2(-4, -98)
+
+[node name="House8" parent="." instance=ExtResource("6_kka3i")]
+position = Vector2(531, 157)
+
+[node name="House9" parent="." instance=ExtResource("6_kka3i")]
+position = Vector2(216, 293)
+
+[node name="House10" parent="." instance=ExtResource("6_kka3i")]
+position = Vector2(214, 464)
+
+[node name="House11" parent="." instance=ExtResource("6_kka3i")]
+position = Vector2(473, 292)
+
+[node name="House12" parent="." instance=ExtResource("6_kka3i")]
+position = Vector2(213, 770)
+
+[node name="House13" parent="." instance=ExtResource("6_kka3i")]
+position = Vector2(-263, 459)
+
+[node name="House15" parent="." instance=ExtResource("6_kka3i")]
+position = Vector2(-269, 759)
+
+[node name="House16" parent="." instance=ExtResource("6_kka3i")]
+position = Vector2(856, 470)
+
+[node name="House17" parent="." instance=ExtResource("6_kka3i")]
+position = Vector2(474, 467)
+
+[node name="House18" parent="." instance=ExtResource("6_kka3i")]
+position = Vector2(858, 93)
+
+[node name="House19" parent="." instance=ExtResource("6_kka3i")]
+position = Vector2(619, -113)
+
+[node name="House20" parent="." instance=ExtResource("6_kka3i")]
+position = Vector2(854, 295)
+
+[node name="House14" parent="." instance=ExtResource("6_kka3i")]
+position = Vector2(682, 693)
+
+[node name="House2" parent="." instance=ExtResource("6_kka3i")]
+position = Vector2(182, -95)
+
+[node name="House3" parent="." instance=ExtResource("6_kka3i")]
+position = Vector2(-252, -101)
+
+[node name="Player" parent="." instance=ExtResource("1_phvr7")]
+position = Vector2(5, 91)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="HUD" parent="." instance=ExtResource("3_hi2gu")]
+visible = false
+
+[node name="Demon" parent="." instance=ExtResource("5_yn438")]
+position = Vector2(1, -82)
+house_mult = null
+lunge_duration = null
+base_lunge_time = null
+lunge_time_variation = null
+side_step_variation = null
+meteor_zone_w = null
+bullet_spray_duration = null
+bullet_spray_time = null
+bullet_spray_angle = null
+bullet_spray_frequency = null
+bullet_splash_frequency = null
+bullet_splash_duration = null
+bullet_splash_time_between = null
+meteor_shower_time_between = null
+
+[node name="Village_Center" type="Node2D" parent="."]
+position = Vector2(1, 0)
+
+[connection signal="game_end" from="." to="HUD" method="_game_end"]
+[connection signal="game_end" from="." to="Demon" method="_game_end"]
+[connection signal="game_start" from="." to="Player" method="_game_start"]
+[connection signal="game_start" from="." to="HUD" method="_game_start"]
+[connection signal="game_start" from="." to="Demon" method="_game_start"]
+[connection signal="next_phase" from="." to="Demon" method="_on_main_next_phase"]
+[connection signal="villagers_eaten" from="." to="HUD" method="_on_main_villagers_eaten"]
+[connection signal="died" from="Player" to="." method="_on_player_died"]
+[connection signal="update_health" from="Player" to="HUD" method="_update_health"]
+[connection signal="update_mana" from="Player" to="HUD" method="_update_mana"]
+[connection signal="update_stamina" from="Player" to="HUD" method="_update_stamina"]
+[connection signal="eat_villager" from="Demon" to="." method="_on_demon_eat_villager"]

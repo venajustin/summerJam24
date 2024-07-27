@@ -5,6 +5,7 @@ signal game_end
 signal villagers_eaten
 signal next_phase
 
+
 var num_villagers_eaten = 0
 
 var timer = 0
@@ -58,15 +59,15 @@ func _process(delta):
 			game_start.emit()
 			get_tree().reload_current_scene()
 			timer = 0
-
-		
+	
+	if Input.is_key_pressed(KEY_F14):
+		game_end.emit(1)
+		state = State.OVER
 
 
 func _on_player_died():
 	state = State.OVER
-	game_end.emit()
-
-
+	game_end.emit(0)
 
 
 func _on_demon_eat_villager():
@@ -76,3 +77,9 @@ func _on_demon_eat_villager():
 	if num_villagers_eaten > 10:
 		next_phase.emit()
 	villagers_eaten.emit(num_villagers_eaten, num_villagers)
+	if num_villagers_eaten >= num_villagers:
+		game_end.emit(1)
+		state = State.OVER
+
+
+

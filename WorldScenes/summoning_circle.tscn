@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1xgckt7uhkw1"]
+
+[ext_resource type="Texture2D" uid="uid://b88i1bf32a7ig" path="res://Assets/Environment/RedRunet.png" id="1_d2wo1"]
+
+[node name="SummoningCircle" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_d2wo1")
+metadata/summonzone = true

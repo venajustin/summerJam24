@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://1qah7x3w1sgj"
+path="res://.godot/imported/smartsound_CINEMATIC_IMPACT_Eruption_03 (1).mp3-8a463969e3189b757176bd7bfe9bfc58.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sound FX/ZapSplat/Explosions/smartsound_CINEMATIC_IMPACT_Eruption_03 (1).mp3"
+dest_files=["res://.godot/imported/smartsound_CINEMATIC_IMPACT_Eruption_03 (1).mp3-8a463969e3189b757176bd7bfe9bfc58.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
