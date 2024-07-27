@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://de8uq7msyqwt7"]
+[gd_scene load_steps=27 format=3 uid="uid://de8uq7msyqwt7"]
 
 [ext_resource type="Script" path="res://Scripts/DemonController.gd" id="1_t2d4y"]
 [ext_resource type="PackedScene" uid="uid://cxd233mo0u48d" path="res://entitiesScenes/meteor.tscn" id="2_4mx7v"]
@@ -49,43 +49,39 @@ region = Rect2(128, 0, 128, 128)
 atlas = ExtResource("5_fehpy")
 region = Rect2(256, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_p6lc8"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_31en5"]
 atlas = ExtResource("6_li385")
 region = Rect2(0, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_t2kps"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_58uk0"]
 atlas = ExtResource("6_li385")
 region = Rect2(128, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_k0bvf"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_crstc"]
 atlas = ExtResource("6_li385")
 region = Rect2(256, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4ploa"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jll7"]
 atlas = ExtResource("6_li385")
 region = Rect2(384, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vysq8"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_lbmxu"]
 atlas = ExtResource("6_li385")
 region = Rect2(512, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5wror"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8tmi"]
 atlas = ExtResource("6_li385")
 region = Rect2(640, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_utgxe"]
-atlas = ExtResource("6_li385")
-region = Rect2(768, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_47hvr"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_thnpb"]
 atlas = ExtResource("6_li385")
 region = Rect2(896, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kqjv2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_lpowh"]
 atlas = ExtResource("6_li385")
 region = Rect2(1024, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_p5bpu"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_oa84y"]
 atlas = ExtResource("6_li385")
 region = Rect2(1152, 0, 128, 128)
 
@@ -107,38 +103,35 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_p6lc8")
+"texture": SubResource("AtlasTexture_31en5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_t2kps")
+"texture": SubResource("AtlasTexture_58uk0")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_k0bvf")
+"texture": SubResource("AtlasTexture_crstc")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4ploa")
+"texture": SubResource("AtlasTexture_8jll7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vysq8")
+"texture": SubResource("AtlasTexture_lbmxu")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5wror")
+"texture": SubResource("AtlasTexture_v8tmi")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_utgxe")
+"texture": SubResource("AtlasTexture_thnpb")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_47hvr")
+"texture": SubResource("AtlasTexture_lpowh")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kqjv2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_p5bpu")
+"texture": SubResource("AtlasTexture_oa84y")
 }],
 "loop": true,
 "name": &"Meteors",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mpdal"]
@@ -162,7 +155,9 @@ frame_progress = 0.515604
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_g4n7w")
-animation = &"Idle"
+animation = &"Meteors"
+frame = 1
+frame_progress = 0.0329517
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_mpdal")
@@ -177,7 +172,7 @@ shape = SubResource("CircleShape2D_tmdk7")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 color = Color(1, 0.530717, 0.553493, 1)
-energy = 1.42
+energy = 0.3
 texture = ExtResource("7_7emve")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

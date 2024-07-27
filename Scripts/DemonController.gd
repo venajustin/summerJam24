@@ -152,8 +152,10 @@ func _physics_process(delta):
 	
 	if meteorstrike <= 0 && meteorstrike > -1:
 		meteorstrike = -1
+		_tentacle_animation_controller.play("Idle")
 		objective = Target.PLAYER
 	if meteorstrike > 0:
+		_tentacle_animation_controller.play("Meteors")
 		if nextmeteor > .05:
 			nextmeteor = 0
 			var meteor_location = position + Vector2(randf() * meteor_zone_w - (meteor_zone_w / 2), randf() * meteor_zone_w - (meteor_zone_w / 2))

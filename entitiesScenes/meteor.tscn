@@ -122,6 +122,7 @@ animations = [{
 [node name="Meteor" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_xkss6")
+damage = 100
 
 [node name="Shadow" type="AnimatedSprite2D" parent="."]
 z_index = -1
