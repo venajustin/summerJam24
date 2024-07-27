@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cnw01pvvbha64"]
+[gd_scene load_steps=11 format=3 uid="uid://cnw01pvvbha64"]
 
 [ext_resource type="PackedScene" uid="uid://dyujv2upnb8lb" path="res://entitiesScenes/player.tscn" id="1_phvr7"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_us0ks"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://de8uq7msyqwt7" path="res://entitiesScenes/demon.tscn" id="5_yn438"]
 [ext_resource type="PackedScene" uid="uid://dr180t78oi1vc" path="res://entitiesScenes/house.tscn" id="6_kka3i"]
 [ext_resource type="PackedScene" uid="uid://b1xgckt7uhkw1" path="res://WorldScenes/summoning_circle.tscn" id="7_1xhu4"]
+[ext_resource type="PackedScene" uid="uid://lju4ln15pxcc" path="res://entitiesScenes/floating_lamp.tscn" id="8_dhs0h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6tqu7"]
 size = Vector2(67, 1179)
@@ -130,6 +131,51 @@ position = Vector2(-139, 294)
 
 [node name="Village_Center" type="Node2D" parent="."]
 position = Vector2(1, 0)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.145098, 0.0941176, 0.12549, 1)
+
+[node name="FloatingLamp" parent="." instance=ExtResource("8_dhs0h")]
+position = Vector2(271, 123)
+
+[node name="FloatingLamp3" parent="." instance=ExtResource("8_dhs0h")]
+position = Vector2(-108, 168)
+
+[node name="FloatingLamp4" parent="." instance=ExtResource("8_dhs0h")]
+position = Vector2(8, 403)
+
+[node name="FloatingLamp13" parent="." instance=ExtResource("8_dhs0h")]
+position = Vector2(-74, 760)
+
+[node name="FloatingLamp14" parent="." instance=ExtResource("8_dhs0h")]
+position = Vector2(-345, 611)
+
+[node name="FloatingLamp2" parent="." instance=ExtResource("8_dhs0h")]
+position = Vector2(-344, -21)
+
+[node name="FloatingLamp5" parent="." instance=ExtResource("8_dhs0h")]
+position = Vector2(-125, -160)
+
+[node name="FloatingLamp6" parent="." instance=ExtResource("8_dhs0h")]
+position = Vector2(350, -184)
+
+[node name="FloatingLamp7" parent="." instance=ExtResource("8_dhs0h")]
+position = Vector2(626, -128)
+
+[node name="FloatingLamp8" parent="." instance=ExtResource("8_dhs0h")]
+position = Vector2(705, 168)
+
+[node name="FloatingLamp9" parent="." instance=ExtResource("8_dhs0h")]
+position = Vector2(962, -32)
+
+[node name="FloatingLamp10" parent="." instance=ExtResource("8_dhs0h")]
+position = Vector2(337, 385)
+
+[node name="FloatingLamp11" parent="." instance=ExtResource("8_dhs0h")]
+position = Vector2(386, 652)
+
+[node name="FloatingLamp12" parent="." instance=ExtResource("8_dhs0h")]
+position = Vector2(885, 647)
 
 [connection signal="game_end" from="." to="." method="_on_game_end"]
 [connection signal="game_end" from="." to="HUD" method="_game_end"]

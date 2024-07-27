@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dr180t78oi1vc"]
+[gd_scene load_steps=11 format=3 uid="uid://dr180t78oi1vc"]
 
 [ext_resource type="Script" path="res://Scripts/house.gd" id="1_ec2m7"]
 [ext_resource type="Texture2D" uid="uid://cim7gehcfhypu" path="res://Assets/Environment/House 4 phase destruction.png" id="1_ixp87"]
@@ -6,6 +6,10 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5dtgc"]
 size = Vector2(128, 63)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_vr087"]
+cull_mode = 2
+polygon = PackedVector2Array(-63, -30, 63, -30, 63, 32, -63, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jx5of"]
 atlas = ExtResource("1_ixp87")
@@ -52,6 +56,9 @@ _villager_scene = ExtResource("2_gwsgc")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HouseArea"]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_5dtgc")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_vr087")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

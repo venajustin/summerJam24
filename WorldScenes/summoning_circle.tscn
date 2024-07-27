@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b1xgckt7uhkw1"]
+[gd_scene load_steps=3 format=3 uid="uid://b1xgckt7uhkw1"]
 
 [ext_resource type="Texture2D" uid="uid://b88i1bf32a7ig" path="res://Assets/Environment/RedRunet.png" id="1_d2wo1"]
+[ext_resource type="Texture2D" uid="uid://cka7og4465xi1" path="res://Assets/VFX/neutralpoint.webp" id="2_e5dou"]
 
 [node name="SummoningCircle" type="Node2D"]
 
@@ -8,3 +9,8 @@
 texture_filter = 1
 texture = ExtResource("1_d2wo1")
 metadata/summonzone = true
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(1, 0.647059, 0.611765, 1)
+shadow_enabled = true
+texture = ExtResource("2_e5dou")

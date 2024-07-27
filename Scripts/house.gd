@@ -7,6 +7,7 @@ var hit_tick = -1
 @export var _villager_scene:PackedScene
 
 @onready var animation_controller: AnimatedSprite2D = $AnimatedSprite2D
+@onready var light_occluder:LightOccluder2D = $LightOccluder2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	animation_controller.stop()
@@ -22,6 +23,7 @@ func _physics_process(delta):
 			health -= 1
 			if health == 0:
 				process_mode = 4
+				light_occluder.occluder_light_mask = 0
 				spawnvillagers()
 			animation_controller.frame = 3 - health
 		else:

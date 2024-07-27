@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://lju4ln15pxcc"]
+
+[ext_resource type="Texture2D" uid="uid://cka7og4465xi1" path="res://Assets/VFX/neutralpoint.webp" id="1_0l2o6"]
+[ext_resource type="Script" path="res://Scripts/floating_lamp.gd" id="1_1va77"]
+[ext_resource type="Texture2D" uid="uid://dkyoccbnk51u5" path="res://Assets/Projectiles/blue_energy_bullet.png" id="1_narpu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mfy8x"]
+atlas = ExtResource("1_narpu")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k7c65"]
+atlas = ExtResource("1_narpu")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1o2a"]
+atlas = ExtResource("1_narpu")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2tgmx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mfy8x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k7c65")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1o2a")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="FloatingLamp" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_1va77")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.686275, 1, 1, 1)
+energy = 0.5
+shadow_enabled = true
+texture = ExtResource("1_0l2o6")
+texture_scale = 1.5
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -7)
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_2tgmx")
+frame_progress = 0.302425
