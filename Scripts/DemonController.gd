@@ -23,6 +23,7 @@ var between_bullets_time:float = 0
 var direction:Vector2
 enum Target { PLAYER, VILLAGER, CENTER, STILL }
 var objective = Target.VILLAGER
+var villagerTarget:Node2D = null
 
 var meteorstrike = 0
 var nextmeteor = 0
@@ -79,7 +80,7 @@ func _physics_process(delta):
 	elif objective == Target.VILLAGER:
 		pass # implement going to the villager that triggered this and eat them
 		
-	position += delta * speed * direction * house_speed
+
 	
 	if objective == Target.PLAYER:
 
@@ -107,6 +108,11 @@ func _physics_process(delta):
 		nextmeteor += delta
 		meteorstrike -= delta
 	
+	if objective == Target.VILLAGER:
+		direction = (villagerTarget.position - position).normalized()
+		
+	position += delta * speed * direction * house_speed
+		
 
 func attack(offset: float):
 	var bullet = bullet_scene.instantiate()
@@ -138,4 +144,11 @@ func _on_body_entered(body):
 		print("villager eaten")
 		body.queue_free()
 		eat_villager.emit()
-		
+		objective = Target.PLAYER
+
+
+func _on_vision_body_entered(body):
+	if objective == Target.PLAYER:
+		if body.has_method("stun"):
+			objective = Target.VILLAGER
+			villagerTarget = body

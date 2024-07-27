@@ -56,7 +56,7 @@ shape = SubResource("CapsuleShape2D_ppcd5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fgaab")
-frame_progress = 0.608405
+frame_progress = 0.27556
 
 [node name="Vision" type="Area2D" parent="."]
 
