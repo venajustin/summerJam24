@@ -2,13 +2,16 @@ extends Node
 
 signal game_start
 signal game_end
+signal villagers_eaten
 
+var num_villagers_eaten = 0
 
 var timer = 0
 
 enum State {RUNNING, PAUSED, OVER}
 
 var state: State = State.RUNNING
+var window:Window
 
 @onready var _player = $Player
 
@@ -16,14 +19,14 @@ var state: State = State.RUNNING
 func _ready():
 	state = State.RUNNING
 	game_start.emit()
-
-
+	window = get_window()
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_key_pressed(KEY_ESCAPE):
 		get_tree().quit()
 	if Input.is_key_pressed(KEY_F11):
-		var window:Window = get_window()
+		
 		if window.mode == Window.Mode.MODE_EXCLUSIVE_FULLSCREEN:
 			window.borderless = false
 			window.mode = Window.Mode.MODE_WINDOWED
@@ -48,3 +51,8 @@ func _on_player_died():
 	game_end.emit()
 
 
+
+
+func _on_demon_eat_villager():
+	num_villagers_eaten += 1
+	villagers_eaten.emit(num_villagers_eaten)

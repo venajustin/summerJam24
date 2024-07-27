@@ -10,6 +10,10 @@ var direction: Vector2 = Vector2.ZERO
 enum Target {EVADE, FORWARD}
 var state:Target = Target.FORWARD
 
+@export var speedboost_ammount:float = 3
+var speedboost_left = 0
+
+
 func _ready():
 	direction = Vector2(1, 0).rotated(randf() * 2 * PI)
 	for ray in rays:
@@ -17,6 +21,8 @@ func _ready():
 		ray.add_exception(_player)
 		ray.add_exception(_player.find_child("Hitbox", false))
 		ray.add_exception(_demon)
+	$AnimatedSprite2D.play()
+	speedboost_left = 2
 
 
 
@@ -34,12 +40,17 @@ func _physics_process(delta):
 	elif state == Target.FORWARD:
 		pass
 	
-	velocity = speed * direction
+	var finalspeed = speed
+	if speedboost_left > 0:
+		finalspeed *= speedboost_ammount
+		speedboost_left -= delta
+	velocity = finalspeed * direction
 	
 	move_and_slide()
 
 
-
+func stun():
+	pass
 
 func _on_vision_area_entered(area):
 	if area.name == "Demon":

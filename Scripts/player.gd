@@ -72,7 +72,12 @@ func _physics_process(delta):
 		velocity.y = move_toward(velocity.y, 0, speed)
 	move_and_slide()
 	
-
+	var colliding_with = _hit_box.get_overlapping_areas()
+	for area in colliding_with:
+		if area.name == "Demon":
+			health -= 100 * delta
+			update_health.emit(health)
+	
 	if Input.is_action_just_pressed("dash"):
 		pass
 		
@@ -117,7 +122,6 @@ func damage(val):
 	hitstun = 1
 
 func _on_hitbox_area_entered(area):
-	
 	if area.has_method("get_damage"):
 		damage(area.get_damage())
 

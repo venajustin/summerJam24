@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cnw01pvvbha64"]
+[gd_scene load_steps=9 format=3 uid="uid://cnw01pvvbha64"]
 
 [ext_resource type="PackedScene" uid="uid://dyujv2upnb8lb" path="res://entitiesScenes/player.tscn" id="1_phvr7"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_us0ks"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://doa818g01xn4" path="res://WorldScenes/hud.tscn" id="3_hi2gu"]
 [ext_resource type="PackedScene" uid="uid://de8uq7msyqwt7" path="res://entitiesScenes/demon.tscn" id="5_yn438"]
 [ext_resource type="PackedScene" uid="uid://dr180t78oi1vc" path="res://entitiesScenes/house.tscn" id="6_kka3i"]
-[ext_resource type="PackedScene" uid="uid://nw43l5if1lny" path="res://entitiesScenes/villager.tscn" id="7_60ko4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6tqu7"]
 size = Vector2(67, 1179)
@@ -113,18 +112,14 @@ position = Vector2(1, -82)
 [node name="Village_Center" type="Node2D" parent="."]
 position = Vector2(1, 0)
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("7_60ko4")]
-position = Vector2(-263, 41)
-
-[node name="CharacterBody2D2" parent="." instance=ExtResource("7_60ko4")]
-position = Vector2(-291, 206)
-
 [connection signal="game_end" from="." to="HUD" method="_game_end"]
 [connection signal="game_end" from="." to="Demon" method="_game_end"]
 [connection signal="game_start" from="." to="Player" method="_game_start"]
 [connection signal="game_start" from="." to="HUD" method="_game_start"]
 [connection signal="game_start" from="." to="Demon" method="_game_start"]
+[connection signal="villagers_eaten" from="." to="HUD" method="_on_main_villagers_eaten"]
 [connection signal="died" from="Player" to="." method="_on_player_died"]
 [connection signal="update_health" from="Player" to="HUD" method="_update_health"]
 [connection signal="update_mana" from="Player" to="HUD" method="_update_mana"]
 [connection signal="update_stamina" from="Player" to="HUD" method="_update_stamina"]
+[connection signal="eat_villager" from="Demon" to="." method="_on_demon_eat_villager"]

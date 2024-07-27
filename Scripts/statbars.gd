@@ -11,6 +11,7 @@ const default_height = 10
 @onready var _stamina_bar:ColorRect = $Stamina
 @onready var _mana_bar:ColorRect = $Mana
 @onready var _death_overlay = $DeathScreen
+@onready var _num_villagers_text = $num_villagers
 
 const STAMINA_NORMAL_COLOR: Color = Color(0.85882353782654, 0.91372549533844, 0.40392157435417)
 const STAMINA_LOW_COLOR: Color = Color(0.85882353782654, 0.19215686619282, 0.40392157435417)
@@ -40,3 +41,7 @@ func _game_start():
 	_death_overlay.visible = false
 func _game_end():
 	_death_overlay.visible = true
+
+
+func _on_main_villagers_eaten(numVillagers):
+	_num_villagers_text.text = str(numVillagers) 

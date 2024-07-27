@@ -3,49 +3,49 @@
 [ext_resource type="Script" path="res://Scripts/DemonController.gd" id="1_t2d4y"]
 [ext_resource type="PackedScene" uid="uid://cxd233mo0u48d" path="res://entitiesScenes/meteor.tscn" id="2_4mx7v"]
 [ext_resource type="PackedScene" uid="uid://x0okev48u71u" path="res://entitiesScenes/bullet.tscn" id="3_qdnbx"]
-[ext_resource type="Texture2D" uid="uid://2t0leyv40ld8" path="res://Assets/Monster/Monster Run SS.png" id="4_dpmst"]
-[ext_resource type="Texture2D" uid="uid://dru3rloskaaej" path="res://Assets/Monster/Monster 2nd Phase Tentacles.png" id="5_uwovc"]
+[ext_resource type="Texture2D" uid="uid://tyqvwfg8iwck" path="res://Assets/Monster/Monster colored.png" id="4_jh3mw"]
+[ext_resource type="Texture2D" uid="uid://csw7x5f04f3uc" path="res://Assets/Monster/Monster colored (2nd Phase).png" id="5_qh24e"]
 [ext_resource type="Texture2D" uid="uid://ce8lolyijfdvy" path="res://Assets/Monster/Monster 2nd Phase Meteor Strike.png" id="6_li385"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_05yqc"]
-atlas = ExtResource("4_dpmst")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ddexi"]
+atlas = ExtResource("4_jh3mw")
 region = Rect2(0, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qtwe3"]
-atlas = ExtResource("4_dpmst")
+[sub_resource type="AtlasTexture" id="AtlasTexture_mmbii"]
+atlas = ExtResource("4_jh3mw")
 region = Rect2(128, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_r2nim"]
-atlas = ExtResource("4_dpmst")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ku15j"]
+atlas = ExtResource("4_jh3mw")
 region = Rect2(256, 0, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_14b2x"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_05yqc")
+"texture": SubResource("AtlasTexture_ddexi")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qtwe3")
+"texture": SubResource("AtlasTexture_mmbii")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_r2nim")
+"texture": SubResource("AtlasTexture_ku15j")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4c5ev"]
-atlas = ExtResource("5_uwovc")
+[sub_resource type="AtlasTexture" id="AtlasTexture_y5jlr"]
+atlas = ExtResource("5_qh24e")
 region = Rect2(0, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_33dll"]
-atlas = ExtResource("5_uwovc")
+[sub_resource type="AtlasTexture" id="AtlasTexture_c56oc"]
+atlas = ExtResource("5_qh24e")
 region = Rect2(128, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5j8nf"]
-atlas = ExtResource("5_uwovc")
+[sub_resource type="AtlasTexture" id="AtlasTexture_shoew"]
+atlas = ExtResource("5_qh24e")
 region = Rect2(256, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p6lc8"]
@@ -92,13 +92,13 @@ region = Rect2(1152, 0, 128, 128)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4c5ev")
+"texture": SubResource("AtlasTexture_y5jlr")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_33dll")
+"texture": SubResource("AtlasTexture_c56oc")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5j8nf")
+"texture": SubResource("AtlasTexture_shoew")
 }],
 "loop": true,
 "name": &"Idle",
@@ -157,7 +157,7 @@ frame_progress = 0.553713
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_g4n7w")
-animation = &"Meteors"
+animation = &"Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_mpdal")
@@ -167,3 +167,4 @@ position = Vector2(1, -18)
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
