@@ -176,8 +176,10 @@ position = Vector2(1, -18)
 shape = SubResource("CircleShape2D_tmdk7")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, -20)
 color = Color(1, 0.530717, 0.553493, 1)
-energy = 1.42
+energy = 0.27
+shadow_enabled = true
 texture = ExtResource("7_7emve")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

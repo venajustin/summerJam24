@@ -13,6 +13,14 @@ var mana = 100
 
 @export var hitstun_time = .5
 
+const dashspeed = 800
+const dashlength = 0.15
+var dash_timer = 0
+@export var dash_cooldown = 3.0 # Cooldown period for dashing
+@onready var dash = $Dash
+
+
+
 var timer = 0
 var hitstun = 0
 
@@ -39,17 +47,30 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	
-	var speed = walk_speed
+	var normalspeed = walk_speed
+	if dash_timer > 0:
+		dash_timer -= delta
+
+	if Input.is_action_just_pressed("dash") and dash_timer <= 0:
+		dash.start_dash(dashlength)
+		dash_timer = dash_cooldown
+		stamina -= 100
+		_animated_sprite.play("dash")
+	var dashing = dash.is_dashing()
+	var speed= dashspeed if dashing else normalspeed
+	
 	
 	if stamina > 20:
 		can_sprint = true
 	if Input.is_action_pressed("sprint") && stamina > 1 && can_sprint:
-		_animated_sprite.play("run")
+		if !dashing:
+			_animated_sprite.play("run")
 		speed = run_speed
 		if stamina > 0:
 			stamina -= delta * stamina_loss_mult
 	else:
-		_animated_sprite.play("walk")
+		if !dashing:
+			_animated_sprite.play("walk")
 		if stamina < 20:
 			can_sprint = false
 		if stamina < stamina_max:

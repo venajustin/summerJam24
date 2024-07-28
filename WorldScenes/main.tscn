@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cnw01pvvbha64"]
+[gd_scene load_steps=14 format=3 uid="uid://cnw01pvvbha64"]
 
 [ext_resource type="PackedScene" uid="uid://dyujv2upnb8lb" path="res://entitiesScenes/player.tscn" id="1_phvr7"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_us0ks"]
@@ -14,6 +14,43 @@ size = Vector2(67, 1179)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xqllf"]
 size = Vector2(1676, 68)
+
+[sub_resource type="Gradient" id="Gradient_fkcou"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 0.00648552, 0.354697, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vsako"]
+gradient = SubResource("Gradient_fkcou")
+
+[sub_resource type="Environment" id="Environment_uhi61"]
+background_mode = 3
+background_energy_multiplier = 4.71
+tonemap_mode = 2
+tonemap_exposure = 1.17
+tonemap_white = 2.35
+glow_enabled = true
+glow_levels/1 = 16.0
+glow_levels/2 = 8.09
+glow_levels/3 = 5.32
+glow_levels/4 = 0.9
+glow_levels/5 = 0.0
+glow_normalized = true
+glow_intensity = 0.73
+glow_strength = 0.79
+glow_bloom = 0.35
+glow_blend_mode = 1
+glow_hdr_threshold = 0.21
+glow_hdr_scale = 0.74
+glow_hdr_luminance_cap = 9.31
+glow_map_strength = 0.43
+fog_light_energy = 2.52
+fog_density = 0.3995
+fog_sky_affect = 0.88
+fog_height = -0.15
+adjustment_enabled = true
+adjustment_brightness = 0.92
+adjustment_contrast = 1.41
+adjustment_saturation = 0.58
+adjustment_color_correction = SubResource("GradientTexture1D_vsako")
 
 [node name="Main" type="Node"]
 script = ExtResource("1_us0ks")
@@ -119,7 +156,7 @@ position = Vector2(237, -99)
 position = Vector2(-252, -101)
 
 [node name="Player" parent="." instance=ExtResource("1_phvr7")]
-position = Vector2(141, 154)
+position = Vector2(226, 146)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
@@ -176,6 +213,9 @@ position = Vector2(386, 652)
 
 [node name="FloatingLamp12" parent="." instance=ExtResource("8_dhs0h")]
 position = Vector2(885, 647)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_uhi61")
 
 [connection signal="game_end" from="." to="." method="_on_game_end"]
 [connection signal="game_end" from="." to="HUD" method="_game_end"]

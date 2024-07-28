@@ -1,9 +1,8 @@
-[gd_scene load_steps=39 format=3 uid="uid://dyujv2upnb8lb"]
+[gd_scene load_steps=38 format=3 uid="uid://dyujv2upnb8lb"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_imu6a"]
 [ext_resource type="Texture2D" uid="uid://ov32t1eceqtn" path="res://Assets/Player/walk.png" id="2_jo8te"]
 [ext_resource type="Texture2D" uid="uid://dbb1a1yk4kl8l" path="res://Assets/Player/Idle SS.png" id="2_wqdfm"]
-[ext_resource type="Texture2D" uid="uid://c7bso6chiykch" path="res://Assets/Player/Player Dash warp frame.png" id="2_xst3p"]
 [ext_resource type="Texture2D" uid="uid://dj8ntdey4hqsq" path="res://Assets/Player/Player Run (colored).png" id="3_ln5q4"]
 [ext_resource type="Texture2D" uid="uid://cka7og4465xi1" path="res://Assets/VFX/neutralpoint.webp" id="5_0infa"]
 [ext_resource type="PackedScene" uid="uid://m7igcsmclqaf" path="res://Scripts/dash.tscn" id="6_ljuq6"]
@@ -124,14 +123,6 @@ region = Rect2(512, 0, 64, 64)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_xst3p")
-}],
-"loop": true,
-"name": &"dash",
-"speed": 1.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_swvkd")
 }, {
 "duration": 1.0,
@@ -249,8 +240,8 @@ hitstun_time = 1.0
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_umh2c")
-animation = &"idle"
-frame_progress = 0.839635
+animation = &"run"
+frame_progress = 0.000336223
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 2)
@@ -263,7 +254,6 @@ position = Vector2(0, 3)
 shape = SubResource("CapsuleShape2D_ta4ay")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-texture_filter = 1
 color = Color(0.815686, 1, 1, 1)
 shadow_enabled = true
 texture = ExtResource("5_0infa")
