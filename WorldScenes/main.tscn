@@ -20,6 +20,8 @@ background_mode = 3
 tonemap_mode = 2
 tonemap_exposure = 0.85
 glow_enabled = true
+glow_levels/3 = 5.49
+glow_levels/4 = 2.7
 glow_intensity = 2.6
 glow_blend_mode = 1
 glow_hdr_threshold = 0.1
@@ -48,6 +50,7 @@ position = Vector2(290, 925)
 shape = SubResource("RectangleShape2D_xqllf")
 
 [node name="TileMap2" parent="." instance=ExtResource("2_y4o6d")]
+visible = false
 z_index = -2
 texture_filter = 1
 position = Vector2(-1, -1)

@@ -151,7 +151,7 @@ texture_filter = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_px3qb")
-frame_progress = 0.870485
+frame_progress = 0.94062
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_4hai3")
